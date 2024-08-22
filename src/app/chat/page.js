@@ -1,18 +1,15 @@
 'use client'
 import React, { useState } from 'react'
-// import Emoji from '../../utils/emoji'
 import EmojiPicker from 'emoji-picker-react';
 
 const Chatscreen = () => {
     const [message, setMessage] = useState('');
-    // const [text , setText] = useState('')
-    console.log('message==>', message)
     const [showPicker, setShowPicker] = useState(false);
 
     const onEmojiClick = (event) => {
-        let messageT = message;
-        messageT += event?.emoji;
-        setMessage(messageT);
+        let messageRef = message;
+        messageRef += event?.emoji;
+        setMessage(messageRef);
     };
 
     return (
@@ -117,27 +114,35 @@ const Chatscreen = () => {
                                         type="text"
                                         className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
                                         value={message}
-                                        onChange={(e) => setMessage(e?.target.value)}
+                                        onChange={(e) => (setMessage(e?.target.value), setShowPicker(false))}
                                     />
-                                    {showPicker && <EmojiPicker
-                                        onEmojiClick={onEmojiClick}
-                                        width={'100%'}
-                                        autoFocusSearch={true}
-                                        theme='white'
-                                        emojiStyle='apple'
-                                        lazyLoadEmojis={true}
-                                    />}
+                                    {showPicker && (
+                                        <div className="absolute bottom-12 left-0 w-full  max-h-screen overflow-y-auto shadow-lg rounded-lg">
+                                            <EmojiPicker
+                                                onEmojiClick={onEmojiClick}
+                                                autoFocusSearch={true}
+                                                theme='auto'
+                                                emojiStyle='antroid'
+                                                lazyLoadEmojis={true}
+                                                skinTonesDisabled={false}
+                                                width={'100%'}
+                                                suggestedEmojisMode='false'
+                                            />
+                                        </div>
+                                    )}
 
-                                    <button className="absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600">
+
+                                    <button
+                                        onClick={() => setShowPicker(!showPicker)}
+                                        className={`absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 ${showPicker && 'text-gray-600'} hover:text-gray-600`}
+                                    >
                                         <svg
                                             className="w-6 h-6"
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            onClick={() => setShowPicker(!showPicker)}
                                         >
-
                                             <path
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"

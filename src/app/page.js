@@ -3,9 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { io } from 'socket.io-client';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function Home() {
   const router = useRouter()
+  const { loginWithRedirect } = useAuth0()
 
   // const socket = io("http://localhost:4000");
 
@@ -14,11 +17,11 @@ export default function Home() {
   //     console.log('socket data here ===> ', socket)
   //   })
 
-    // return (
-    //   socket.on('disconnect',()=>{
-    //     console.log('disconnect id',socket.id)
-    //   })
-    // )
+  // return (
+  //   socket.on('disconnect',()=>{
+  //     console.log('disconnect id',socket.id)
+  //   })
+  // )
   // }, [])
 
   const handleOnsubmit = () => {
@@ -55,9 +58,10 @@ export default function Home() {
             <button
               type="button"
               className="cursor-pointer rounded bg-slate-200 text-stone-950 text-center font-bold w-28 py-2"
-              onClick={() => handleOnsubmit()}
+              // onClick={() => handleOnsubmit()}
+              onClick={loginWithRedirect}
             >
-              Submit
+              Login
             </button>
           </div>
         </div>
