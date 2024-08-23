@@ -23,7 +23,7 @@ export const SocketProvider = ({ children }) => {
     }, []);
 
     const sendMessage = (msg) => {
-        socketRef.current.emit('chat message', msg);
+        socketRef.current.emit('chat_message', msg);
     };
 
     return (
