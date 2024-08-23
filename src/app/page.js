@@ -58,8 +58,8 @@ export default function Home() {
             <button
               type="button"
               className="cursor-pointer rounded bg-slate-200 text-stone-950 text-center font-bold w-28 py-2"
-              // onClick={() => handleOnsubmit()}
-              onClick={loginWithRedirect}
+              onClick={() => handleOnsubmit()}
+              // onClick={loginWithRedirect}
             >
               Login
             </button>

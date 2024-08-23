@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { SocketProvider } from "../../context/socketContext";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
           clientId={clientId}
           redirectUri={'http//:localhost:3001'}
         > */}
+        <SocketProvider>
           {children}
+        </SocketProvider>
         {/* </Auth0Provider> */}
       </body>
     </html>

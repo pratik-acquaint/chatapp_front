@@ -45,10 +45,7 @@ const Chatscreen = () => {
                                 </div>
                                 <div className="ml-2 text-sm font-semibold">Henry Boyd</div>
                             </button>
-
                         </div>
-
-
                     </div>
                 </div>
 
@@ -130,8 +127,6 @@ const Chatscreen = () => {
                                             />
                                         </div>
                                     )}
-
-
                                     <button
                                         onClick={() => setShowPicker(!showPicker)}
                                         className={`absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 ${showPicker && 'text-gray-600'} hover:text-gray-600`}
@@ -151,7 +146,6 @@ const Chatscreen = () => {
                                             />
                                         </svg>
                                     </button>
-
                                 </div>
                             </div>
 
@@ -177,14 +171,11 @@ const Chatscreen = () => {
                                     </span>
                                 </button>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
 
